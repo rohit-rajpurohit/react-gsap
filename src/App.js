@@ -1,69 +1,50 @@
 import React, { useEffect, useRef } from "react";
-import logo from "./logo.svg";
-import { gsap, Power3, Power2 } from "gsap";
-import "./App.css";
+import { gsap } from "gsap";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
+import People from "./images/people.webp";
+import "./App.scss";
 
 const App = () => {
-  let logoItem = useRef(null);
-  let textItem = useRef(null);
-  let linkText = useRef(null);
+  let container = useRef(null);
+  let image = useRef(null);
+  let imageReveal = CSSRulePlugin.getRule(".img-container:after");
+  let textReveal = CSSRulePlugin.getRule(".text-container:after");
+
+  let tl = gsap.timeline();
 
   useEffect(() => {
-    gsap.to(logoItem, {
-      opacity: 1,
-      y: -20,
-      ease: Power3.easeOut,
-      rotation: "+=360",
-      duration: 0.8,
+    tl.to(container, { css: { visibility: "visible" }, duration: 0 });
+    tl.to(imageReveal, { width: "0%", ease: "power2.inOut", duration: 1.4 });
+    tl.from(image, {
+      scale: 1.6,
+      ease: "power2.inOut",
+      delay: -1.4,
+      duration: 1.4,
     });
-    gsap.fromTo(
-      textItem,
-      { opacity: 0 },
-      { opacity: 1, y: -20, delay: 0.2, ease: Power3.easeOut, duration: 0.8 }
-    );
-    gsap.fromTo(
-      linkText,
-      { opacity: 0, visibility: "hidden" },
-      {
-        opacity: 1,
-        delay: 0.4,
-        visibility: "visible",
-        ease: Power2.easeOut,
-        duration: 3,
-      }
-    );
-  }, []);
+    tl.to(textReveal, {
+      width: "0%",
+      ease: "power2.inOut",
+      delay: -1.4,
+      duration: 1.4,
+    });
+  });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className="App-logo"
-          alt="logo"
-          ref={(item) => {
-            logoItem = item;
-          }}
-        />
-        <p
-          ref={(item) => {
-            textItem = item;
-          }}
-        >
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          ref={(item) => {
-            linkText = item;
-          }}
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <div className="container" ref={(el) => (container = el)}>
+        <div className="text-container">
+          <p>HELLO THERE</p>
+        </div>
+        <div className="img-container">
+          <img
+            ref={(el) => {
+              image = el;
+            }}
+            src={People}
+            alt="People"
+          />
+        </div>
+      </div>
     </div>
   );
 };
