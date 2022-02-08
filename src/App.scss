@@ -1,4 +1,7 @@
+$bg-col: #f2dba6;
+$bar-col: #292823;
 .main {
+  background-color: $bg-col;
   .container {
     width: 100vw;
     margin: 0;
@@ -10,22 +13,22 @@
 }
 
 .img-container {
-  height: 80vh;
+  height: 65vh;
   width: 70vw;
   position: relative;
   overflow: hidden;
-  margin-left: 2%;
+
   &:after {
     position: absolute;
     content: "";
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: $bg-col;
     top: 0;
     right: 0;
   }
   img {
-    width: 80vw;
+    width: inherit;
     height: inherit;
     margin: 0 auto;
   }
@@ -35,14 +38,15 @@
   overflow: hidden;
   height: 10vh;
   width: fit-content;
-  transform: rotate(-90deg);
-  margin-left: 2%;
+  transform: rotate(90deg);
+  top: 16%;
+  padding: 0 2% 0 2%;
   &:after {
     position: absolute;
     content: "";
     width: 100%;
     height: 100%;
-    background: rgb(236, 63, 63);
+    background: $bar-col;
     top: 0;
     right: 0;
   }
@@ -51,5 +55,7 @@
     font-weight: 700;
     font-family: "Avenir";
     letter-spacing: 5px;
+    color: $bg-col;
+    transform: rotate(-180deg);
   }
 }
