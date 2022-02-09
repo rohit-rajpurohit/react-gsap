@@ -1,11 +1,46 @@
 $bg-col: #f2dba6;
 $bar-col: #292823;
+
+.heading {
+  position: relative;
+  overflow: hidden;
+  transform: rotate(180deg);
+  background-color: $bg-col;
+  width: max-content;
+  height: 10vh;
+  margin: 5% 0 auto 22%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  &:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $bar-col;
+    top: 0;
+    right: 0;
+  }
+  p {
+    width: 25vw;
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: "Avenir";
+    letter-spacing: 2px;
+    padding: 2%;
+    color: $bg-col;
+    transform: rotate(-180deg);
+  }
+}
+
 .main {
   background-color: $bg-col;
   .container {
-    width: 100vw;
-    margin: 0;
-    height: 100vh;
+    width: 80vw;
+    margin: auto;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -13,11 +48,10 @@ $bar-col: #292823;
 }
 
 .img-container {
-  height: 65vh;
-  width: 70vw;
+  height: 60vh;
+  width: 60vw;
   position: relative;
   overflow: hidden;
-
   &:after {
     position: absolute;
     content: "";
@@ -28,34 +62,36 @@ $bar-col: #292823;
     right: 0;
   }
   img {
-    width: inherit;
-    height: inherit;
+    // background: red;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
   }
 }
+
 .text-container {
   position: relative;
   overflow: hidden;
   height: 10vh;
-  width: fit-content;
-  transform: rotate(90deg);
-  top: 16%;
-  padding: 0 2% 0 2%;
+  width: max-content;
+  transform: rotate(-90deg);
+  top: 18%;
   &:after {
     position: absolute;
     content: "";
     width: 100%;
     height: 100%;
     background: $bar-col;
+    // transform: translateX(-100%);
     top: 0;
     right: 0;
   }
   p {
-    font-size: 2rem;
+    width: max-content;
+    font-size: 2.5rem;
     font-weight: 700;
     font-family: "Avenir";
-    letter-spacing: 5px;
+    letter-spacing: 2px;
     color: $bg-col;
-    transform: rotate(-180deg);
   }
 }
